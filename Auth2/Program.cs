@@ -1,7 +1,11 @@
+using Auth2;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddAuthentication().AddCookie(Constants.CookieSchemeName,
+    options => { options.Cookie.Name = Constants.CookieSchemeName; });
 
 var app = builder.Build();
 
