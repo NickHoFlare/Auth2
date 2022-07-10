@@ -25,7 +25,7 @@ namespace Auth2.Pages.Account
             // This is a toy app. Shh.
             if (Credential.UserName == "admin" && Credential.Password == "password")
             {
-                // Create security context
+                // Create security context (claimset)
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, Credential.UserName),

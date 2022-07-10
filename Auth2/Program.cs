@@ -5,7 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddAuthentication(Constants.CookieSchemeName).AddCookie(Constants.CookieSchemeName,
-    options => { options.Cookie.Name = Constants.CookieSchemeName; });
+    options => { 
+        options.Cookie.Name = Constants.CookieSchemeName; 
+    });
 
 var app = builder.Build();
 
@@ -22,6 +24,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Without UseAuthentication middleware, ASP.NET does not look in the Request headers for a cookie to populate the security context with
 app.UseAuthentication();
 app.UseAuthorization();
 
